@@ -3,10 +3,12 @@ package ru.javawebinar.topjava.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.javawebinar.topjava.model.Meal;
+import ru.javawebinar.topjava.model.Sort;
 import ru.javawebinar.topjava.repository.MealRepository;
 import ru.javawebinar.topjava.util.exception.NotFoundException;
 
-import java.util.Collection;
+import java.time.LocalDate;
+import java.util.stream.Stream;
 
 import static ru.javawebinar.topjava.util.ValidationUtil.checkNotFoundWithId;
 
@@ -41,7 +43,11 @@ public class MealServiceImpl implements MealService {
     }
 
     @Override
-    public Collection<Meal> getAll(int userId) throws NotFoundException {
+    public Stream<Meal> getAll(int userId) throws NotFoundException {
         return checkNotFoundWithId(repository.getAll(userId), userId);
+    }
+
+    public Stream<Meal> getFilteredByDate(int userId, LocalDate startDate, LocalDate endDate, Sort sorting) throws NotFoundException {
+        return checkNotFoundWithId(repository.getFilteredByDateAndSorted(userId, startDate, endDate, sorting), userId);
     }
 }

@@ -5,6 +5,7 @@ import ru.javawebinar.topjava.model.AbstractBaseEntity;
 import ru.javawebinar.topjava.util.exception.NotFoundException;
 
 import java.util.Collection;
+import java.util.stream.Stream;
 
 public class ValidationUtil {
 
@@ -12,8 +13,8 @@ public class ValidationUtil {
         return checkNotFound(object, "id=" + id);
     }
 
-    public static <T> Collection<T> checkNotFoundWithId(Collection<T> collection, int id) {
-        return checkNotFound(collection, "id=" + id);
+    public static <T> Stream<T> checkNotFoundWithId(Stream<T> stream, int id) {
+        return checkNotFound(stream, "id=" + id);
     }
 
     public static void checkNotFoundWithId(boolean found, int id) {
@@ -24,9 +25,9 @@ public class ValidationUtil {
         checkNotFound(object != null, msg);
         return object;
     }
-    public static <T> Collection<T> checkNotFound(Collection<T> collection, String msg) {
-        checkNotFound(!collection.isEmpty() && collection != null, msg);
-        return collection;
+    public static <T> Stream<T> checkNotFound(Stream<T> stream, String msg) {
+        checkNotFound(stream != null, msg);
+        return stream;
     }
 
     public static void checkNotFound(boolean found, String msg) {

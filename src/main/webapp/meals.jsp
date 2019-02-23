@@ -20,6 +20,28 @@
 <section>
     <h3><a href="index.html">Home</a></h3>
     <h2>Meals</h2>
+    <form method="post" action="meals">
+        <table border="1" cellpadding="8" cellspacing="0">
+            <thead>
+            <tr>
+                <th>from Date</th>
+                <th>to Date</th>
+                <th></th>
+                <th>from Time</th>
+                <th>to Time</th>
+            </tr>
+            </thead>
+            <tr>
+                <input type="hidden" name="filter" value="filter">
+                <td><input type="date" value="${fromDate}" name="fromDate"></td>
+                <td><input type="date" value="${toDate}" name="toDate"></td>
+                <td></td>
+                <td><input type="time" value="${fromTime}" name="fromTime"></td>
+                <td><input type="time" value="${toTime}" name="toTime"></td>
+            </tr>
+        </table>
+        <button type="submit">Filter</button>
+    </form>
     <a href="meals?action=create">Add Meal</a>
     <hr/>
     <table border="1" cellpadding="8" cellspacing="0">
