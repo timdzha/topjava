@@ -47,6 +47,11 @@ public class MealServiceTest {
         newMeal.setId(created.getId());
         assertMatch(service.getAll(USER_ID), newMeal, MEAL6, MEAL5, MEAL4, MEAL3, MEAL2, MEAL1);
     }
+//  duplicate meal by map(user_id, datetime);
+    @Test(expected = org.springframework.dao.DuplicateKeyException.class)
+    public void createNotDoneWithTheSameDateTime() throws Exception {
+        service.create(getCreatedWithTheSameDateTime(), USER_ID);
+    }
 
     @Test
     public void delete() throws Exception {

@@ -29,6 +29,10 @@ public class MealTestData {
         return new Meal(null,LocalDateTime.of(2019, Month.MARCH, 1, 10, 0), "Созданный Завтрак", 1000);
     }
 
+    public static Meal getCreatedWithTheSameDateTime() {
+        return new Meal(null,LocalDateTime.of(2019, Month.FEBRUARY, 27, 20, 0), "Созданный Ужин", 1000);
+    }
+
     public static Meal getUpdated() {
         return new Meal(MEAL1.getId(), MEAL1.getDateTime(), "Обновленный Завтрак", 500);
     }
