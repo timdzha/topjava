@@ -1,4 +1,5 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/0a25dd472b64444bacd468a3a13463ef)](https://www.codacy.com/app/timdzha/topjava?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=timdzha/topjava&amp;utm_campaign=Badge_Grade)
+[![Build Status](https://travis-ci.org/timdzha/topjava.svg?branch=master)](https://travis-ci.org/timdzha/topjava)
 
 Java Enterprise Online Project 
 ===============================
