@@ -54,17 +54,6 @@ public class MealServiceTest {
     }
 
     @Test
-    public void get() throws Exception {
-        Meal actual = service.get(ADMIN_MEAL_ID, ADMIN_ID);
-        assertMatch(actual, ADMIN_MEAL1);
-    }
-
-    @Test(expected = NotFoundException.class)
-    public void getNotFound() throws Exception {
-        service.get(MEAL1_ID, ADMIN_ID);
-    }
-
-    @Test
     public void update() throws Exception {
         Meal updated = getUpdated();
         service.update(updated, USER_ID);
@@ -72,8 +61,22 @@ public class MealServiceTest {
     }
 
     @Test(expected = NotFoundException.class)
+//    @Test(expected = NullPointerException.class)
     public void updateNotFound() throws Exception {
+//        getNotFound();
         service.update(MEAL1, ADMIN_ID);
+    }
+
+    @Test
+    public void get() throws Exception {
+        Meal actual = service.get(ADMIN_MEAL_ID, ADMIN_ID);
+        assertMatch(actual, ADMIN_MEAL1);
+    }
+
+    @Test(expected = NotFoundException.class)
+//    @Test(expected = javax.persistence.NoResultException.class)
+    public void getNotFound() throws Exception {
+        service.get(MEAL1_ID, ADMIN_ID);
     }
 
     @Test
