@@ -10,10 +10,8 @@ import ru.javawebinar.topjava.util.exception.NotFoundException;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
-import java.nio.file.AccessDeniedException;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Objects;
 
 @Repository
 @Transactional
@@ -52,7 +50,7 @@ public class JpaMealRepositoryImpl implements MealRepository {
     @Override
     public Meal get(int id, int userId) {
         /**
-         * если у EntityManager-a
+         * у EntityManager-a
          * *  метод getSingleResult() кидается эксепшнами в любой ситуации,
          * * если мы не получаем единственный ожидаемый результат. А мы ждем или результат, или null.
          *
