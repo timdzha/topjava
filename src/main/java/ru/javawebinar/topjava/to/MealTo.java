@@ -1,6 +1,10 @@
 package ru.javawebinar.topjava.to;
 
+import org.hibernate.Hibernate;
+import ru.javawebinar.topjava.model.AbstractBaseEntity;
+
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public class MealTo {
     private final Integer id;
@@ -39,6 +43,23 @@ public class MealTo {
 
     public boolean isExcess() {
         return excess;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || !getClass().equals(Hibernate.getClass(o))) {
+            return false;
+        }
+        MealTo that = (MealTo) o;
+        return id != null && id.equals(that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return id == null ? 0 : id;
     }
 
     @Override
