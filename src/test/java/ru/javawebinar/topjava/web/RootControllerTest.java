@@ -15,6 +15,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static ru.javawebinar.topjava.MealTestData.MEALS;
 import static ru.javawebinar.topjava.UserTestData.*;
+import static ru.javawebinar.topjava.util.MealsUtil.getWithExcess;
 import static ru.javawebinar.topjava.web.SecurityUtil.authUserCaloriesPerDay;
 
 class RootControllerTest extends AbstractControllerTest {
@@ -42,13 +43,6 @@ class RootControllerTest extends AbstractControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(view().name("meals"))
                 .andExpect(forwardedUrl("/WEB-INF/jsp/meals.jsp"))
-                .andExpect(model().attribute("meals",
-                        new AssertionMatcher<List<MealTo>>() {
-                            @Override
-                            public void assertion(List<MealTo> actual) throws AssertionError {
-                                MealTestData.assertMatchTo(actual, MealsUtil.getWithExcess(MEALS, authUserCaloriesPerDay()));
-                            }
-                        }
-                ));
+                .andExpect(model().attribute("meals", getWithExcess(MEALS, authUserCaloriesPerDay())));
     }
 }
