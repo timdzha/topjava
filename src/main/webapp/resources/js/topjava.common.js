@@ -9,6 +9,10 @@ function makeEditable(ctx) {
         }
     });
 
+    $(".update").click(function () {
+        updateRow($(this).attr("id"));
+    });
+
     $(document).ajaxError(function (event, jqXHR, options, jsExc) {
         failNoty(jqXHR);
     });
@@ -20,6 +24,18 @@ function makeEditable(ctx) {
 function add() {
     form.find(":input").val("");
     $("#editRow").modal();
+}
+
+function updateRow(id) {
+    $.get(
+        context.ajaxUrl + id,
+        function (data) {
+            $.each(data, function (key, value) {
+                form.find("input[name='" + key + "']").val(value);
+            });
+            $("#editRow").modal();
+    });
+
 }
 
 function deleteRow(id) {
