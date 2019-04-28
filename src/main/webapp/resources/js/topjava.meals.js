@@ -63,6 +63,7 @@ $(function () {
         },
         updateTable: updateFilteredTable
     });
+    $.datetimepicker.setLocale(localeCode);
 
 //  http://xdsoft.net/jqplugins/datetimepicker/
     const startDate = $('#startDate');
