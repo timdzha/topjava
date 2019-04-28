@@ -23,7 +23,6 @@ import ru.javawebinar.topjava.util.exception.IllegalRequestDataException;
 import ru.javawebinar.topjava.util.exception.NotFoundException;
 
 import javax.servlet.http.HttpServletRequest;
-
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -76,7 +75,7 @@ public class ExceptionInfoHandler {
         String[] details = result.getFieldErrors().stream()
                 .map(fe -> {
                     String msg = fe.getDefaultMessage();
-                    return msg == null ? null : (msg.startsWith(fe.getField())) ? msg : fe.getField() + ' ' + msg;
+                    return msg == null ? messageUtil.getMessage(fe) : (msg.startsWith(fe.getField())) ? msg : fe.getField() + ' ' + msg;
                 }).filter(Objects::nonNull)
                 .toArray(String[]::new);
 
